@@ -1,13 +1,13 @@
 
 export const options = {
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'https://nikotin.nomoredomains.club',
     headers: {
         'Content-Type': 'application/json'
     }
 }
 
 export const authOption = {
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'https://nikotin.nomoredomains.club',
     headers: {
         'Content-Type': 'application/json'
     }

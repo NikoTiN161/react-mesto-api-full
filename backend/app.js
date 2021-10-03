@@ -9,6 +9,7 @@ import auth from './middlewares/auth';
 import handleErrors from './middlewares/handleErrors';
 import customValidationUrl from './utils/utils';
 import cors from './middlewares/cors';
+import { requestLogger, errorLogger } from './middlewares/logger'; 
 
 const { PORT = 3001 } = process.env;
 
@@ -21,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 mongoose.connect('mongodb://localhost:27017/mestodb');
+
+app.use(requestLogger);
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -40,6 +43,8 @@ app.post('/signin', celebrate({
 app.use(auth);
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
+
+app.use(errorLogger);
 
 app.use(errors());
 app.use(handleErrors);

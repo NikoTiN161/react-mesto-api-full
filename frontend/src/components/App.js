@@ -167,7 +167,7 @@ function App() {
     function onLogin(email, password) {
         auth.login(email, password)
             .then((data) => {
-                // console.log(data);
+                console.log(data);
                 if (data.message === 'Успешный вход') {
                     setLoggedIn(true);
                     history.push('/');

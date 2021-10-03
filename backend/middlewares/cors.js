@@ -1,6 +1,8 @@
 const allowedCors = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
+    'https://nikotin.nomoredomains.club',
+    'https://mesto.nikotin.nomoredomains.club',
+    'http://nikotin.nomoredomains.club',
+    'mesto.nikotin.nomoredomains.club',
     'http://localhost:3001',
     'https://praktikum.tk',
     'http://praktikum.tk',

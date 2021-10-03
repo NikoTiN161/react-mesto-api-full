@@ -7,7 +7,6 @@ import BadRequestError from '../errors/BadRequestError';
 const { JWT_SECRET = 'dev-key' } = process.env;
 
 export const login = (req, res, next) => {
-  res.cookie('test', 'myCookie');
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then((user) => {
@@ -16,11 +15,9 @@ export const login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          domain: 'http://127.0.0.1:3000',
           sameSite: true,
         });
-        res.send({ email: user.email, _id: user._id, message: 'Успешный вход' })
-        .end();
+        res.send({ email: user.email, _id: user._id, message: 'Успешный вход' });
     })
     .catch(next);
 };
