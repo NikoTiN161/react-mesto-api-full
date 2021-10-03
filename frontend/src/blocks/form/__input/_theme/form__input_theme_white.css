@@ -1,0 +1,7 @@
+.form__input_theme_white {
+    border-bottom: 2px solid #CCCCCC;
+    background-color: #000000;
+    color: white;
+    margin-left: 30px;
+    margin-right: 30px;;
+}

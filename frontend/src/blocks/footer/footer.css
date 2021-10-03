@@ -1,0 +1,17 @@
+.footer {
+    padding: 66px 0 60px;
+}
+
+@media (max-width:920px) {
+    .footer {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+}
+
+@media (max-width:690px) {
+    .footer {
+        padding-top: 48px;
+        padding-bottom: 36px;
+    }
+}

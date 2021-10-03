@@ -1,0 +1,29 @@
+.overlay__close {
+    background-image: url(../../../images/close-icon.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    position: absolute;
+    top: -42px;
+    right: -36px;
+    padding: 0;
+    max-width: 33px;
+    min-height: 42px;
+    width: 100%;
+    border: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.overlay__close:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media (max-width: 530px) {
+    .overlay__close {
+        right: 7px;
+        max-width: 23px;
+        min-height: 20px;
+    }
+}

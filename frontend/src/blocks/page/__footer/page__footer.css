@@ -1,0 +1,9 @@
+.page__footer {
+    
+}
+
+@media (max-width:690px) {
+    .page__footer {
+        padding: 0 19px;
+    }
+}

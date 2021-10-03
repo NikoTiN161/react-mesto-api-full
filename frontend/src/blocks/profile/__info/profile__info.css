@@ -1,0 +1,17 @@
+.profile__info {
+    padding-left: 30px;
+    padding-right: 18px;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width:690px) {
+    .profile__info {
+        padding-top: 26px;
+        padding-right: 15px;
+        text-align: center;
+        flex-basis: 75%;
+    }
+}

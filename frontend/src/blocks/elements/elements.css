@@ -1,0 +1,11 @@
+.elements {
+    padding-top: 50px;
+    font-family: Inter, Arial, sans-serif;
+    font-style: normal;
+}
+
+@media (max-width:690px) {
+    .elements {
+        padding-top: 36px;
+    }
+}

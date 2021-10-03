@@ -1,0 +1,15 @@
+.profile {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    font-family: Inter, Arial, sans-serif;
+    font-style: normal;
+}
+
+@media (max-width:690px) {
+    .profile {
+        padding-top: 42px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

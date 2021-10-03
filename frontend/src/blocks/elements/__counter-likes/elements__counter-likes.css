@@ -1,0 +1,12 @@
+.elements__counter-likes {
+    /* position: absolute;
+    top: 50%;
+    bottom: -50%; */
+    margin-top: 3px;
+    /* align-self: flex-end; */
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    /* transform: translate(50%, 50% ); */
+}

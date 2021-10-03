@@ -1,0 +1,19 @@
+.elements__image {
+    display: block;
+    max-width: 100%;
+    height: 282px;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.elements__image:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px)  {
+    .elements__image:hover{
+        transform: initial;
+    }
+}
