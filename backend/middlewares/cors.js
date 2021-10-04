@@ -3,7 +3,7 @@ const allowedCors = [
     'https://mesto.nikotin.nomoredomains.club',
     'http://nikotin.nomoredomains.club',
     'mesto.nikotin.nomoredomains.club',
-    'http://localhost:3001',
+    'http://localhost:3000',
     'https://praktikum.tk',
     'http://praktikum.tk',
 ];

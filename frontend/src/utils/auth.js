@@ -16,6 +16,7 @@ class Auth {
     login(email, password) {
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify({ password, email })
         })
