@@ -179,14 +179,14 @@ function App() {
     function onSignOut() {
         setLoggedIn(false);
         localStorage.removeItem('token')
-        history.push('/sing-in');
+        history.push('/sign-in');
     }
 
     function onRegister(email, password) {
         auth.register(email, password)
             .then(res => {
                 if (!!res.data) {
-                    history.push('/sing-in');
+                    history.push('/sign-in');
                     setRegisterSuccess(true);
                 }
                 setIsInfoTooltipOpen(true);
@@ -199,14 +199,14 @@ function App() {
         <CurrentUserContext.Provider value={{ currentUser, emailUser, loggedIn }}>
             <Header onSignOut={onSignOut} />
             <Switch>
-                <Route path="/sing-in">
+                <Route path="/sign-in">
                     <Login
                         onLogin={onLogin}
                         title="Вход"
                         buttonText="Войти"
                     />
                 </Route>
-                <Route path="/sing-up">
+                <Route path="/sign-up">
                     <Register
                         
                         onRegister={onRegister}

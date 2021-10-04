@@ -12,20 +12,20 @@ function Header(props) {
                 return (
                     <div>
                         <Link to="/" className="header__email">{value.emailUser}</Link>
-                        <Link to="/sing-in" onClick={props.onSignOut} className="header__link">Выйти</Link>
+                        <Link to="/sign-in" onClick={props.onSignOut} className="header__link">Выйти</Link>
                     </div>
                 );
-            case '/sing-in':
+            case '/sign-in':
                 return (
-                    <Link to="/sing-up" className="header__link">Регистрация</Link>
+                    <Link to="/sign-up" className="header__link">Регистрация</Link>
                 );
-            case '/sing-up':
+            case '/sign-up':
                 return (
-                    <Link to="/sing-in" className="header__link">Войти</Link>
+                    <Link to="/sign-in" className="header__link">Войти</Link>
                 );
             default:
                 return (
-                    <Link to="/sing-up" className="header__link">Регистрация</Link>
+                    <Link to="/sign-up" className="header__link">Регистрация</Link>
                 );
         }
     }
@@ -34,7 +34,7 @@ function Header(props) {
 
     return (
         <header className="header page__header">
-            <Link to={`${value.loggedIn ? '/' : '/sing-in'}`} className="header__logo" />
+            <Link to={`${value.loggedIn ? '/' : '/sign-in'}`} className="header__logo" />
             {renderSwitch(location.pathname)}
         </header>
     )

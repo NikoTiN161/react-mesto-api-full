@@ -15,7 +15,7 @@ export const login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          sameSite: true,
+          sameSite: false,
         });
         res.send({ email: user.email, _id: user._id, message: 'Успешный вход' });
     })
