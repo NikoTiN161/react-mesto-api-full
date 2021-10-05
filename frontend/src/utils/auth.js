@@ -23,6 +23,15 @@ class Auth {
             .then(this._checkResponse);
     }
 
+    logout() {
+        return fetch(`${this._baseUrl}/signout`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: this._headers,
+        })
+            .then(this._checkResponse);
+    }
+
     register(email, password) {
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
@@ -32,13 +41,13 @@ class Auth {
             .then(this._checkResponse);
     };
 
-    tokenCheck(token) {
+    tokenCheck() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
             }
         })
             .then(this._checkResponse);

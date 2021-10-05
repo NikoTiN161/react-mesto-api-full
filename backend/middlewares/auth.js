@@ -5,7 +5,6 @@ const { JWT_SECRET = 'dev-key' } = process.env;
 
 // eslint-disable-next-line consistent-return
 function auth(req, res, next) {
-  // console.log(req.cookies);
   const { jwt } = req.cookies;
   if (!jwt) {
     throw new UnauthorizedError('Необходима авторизация');

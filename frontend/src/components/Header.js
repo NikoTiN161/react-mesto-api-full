@@ -12,7 +12,7 @@ function Header(props) {
                 return (
                     <div>
                         <Link to="/" className="header__email">{value.emailUser}</Link>
-                        <Link to="/sign-in" onClick={props.onSignOut} className="header__link">Выйти</Link>
+                        <Link to="/sign-out" onClick={props.onSignOut} className="header__link">Выйти</Link>
                     </div>
                 );
             case '/sign-in':

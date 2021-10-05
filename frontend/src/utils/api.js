@@ -34,7 +34,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
             method: 'PATCH',
-            // credentials: 'include',
+            credentials: 'include',
             body: JSON.stringify({
                 name: user.name,
                 about: user.about,
@@ -47,7 +47,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             headers: this._headers,
             method: 'PATCH',
-            // credentials: 'include',
+            credentials: 'include',
             body: JSON.stringify({
                 avatar: link,
 
@@ -60,7 +60,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers,
             method: 'POST',
-            // credentials: 'include',
+            credentials: 'include',
             body: JSON.stringify({
                 name: card.name,
                 link: card.link,
@@ -72,7 +72,7 @@ class Api {
     deleteCard(id) {
         return fetch(`${this._baseUrl}/cards/${id}`, {
             headers: this._headers,
-            // credentials: 'include',
+            credentials: 'include',
             method: 'DELETE',
         })
             .then(this._checkResponse);
@@ -81,7 +81,7 @@ class Api {
     _likeCard(id) {
         return fetch(`${this._baseUrl}/cards/likes/${id}`, {
             headers: this._headers,
-            // credentials: 'include',
+            credentials: 'include',
             method: 'PUT',
         })
             .then(this._checkResponse);
@@ -90,7 +90,7 @@ class Api {
     _removeLikeCard(id) {
         return fetch(`${this._baseUrl}/cards/likes/${id}`, {
             headers: this._headers,
-            // credentials: 'include',
+            credentials: 'include',
             method: 'DELETE',
         })
             .then(this._checkResponse);

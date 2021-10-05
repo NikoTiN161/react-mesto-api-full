@@ -14,7 +14,7 @@ export const login = (req, res, next) => {
       res
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
+          // httpOnly: true,
           sameSite: 'None',
           secure: true,
         });
@@ -22,6 +22,14 @@ export const login = (req, res, next) => {
     })
     .catch(next);
 };
+
+export const logout = (req, res) => {
+  res
+    .cookie('jwt', '', {
+      maxAge: -1,
+    });
+  res.send({ message: 'Успешный выход' });
+}
 
 export const getUsers = (req, res, next) => {
   User.find({})

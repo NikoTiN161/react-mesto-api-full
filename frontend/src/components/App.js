@@ -34,19 +34,19 @@ function App() {
     const history = useHistory();
     const location = useLocation();
 
-        useEffect(() => {
-        api.getUserInfo()
-            .then((user) => {
-                setCurrentUser(user);
-            })
-            .catch(err => console.error(err));
+    useEffect(() => {
+    api.getUserInfo()
+        .then((user) => {
+            setCurrentUser(user);
+        })
+        .catch(err => console.error(err));
 
-        api.getInitialCards()
-            .then((cards) => {
-                setCards(cards);
-            })
-            .catch(err => console.error(err));
-        }, []);
+    api.getInitialCards()
+        .then((cards) => {
+            setCards(cards);
+        })
+        .catch(err => console.error(err));
+    }, [loggedIn]);
 
     useEffect(() => {
         auth.tokenCheck()
@@ -151,13 +151,10 @@ function App() {
                 closeAllPopups();
             }
         }
-
-        document.addEventListener('keydown', closeByEscape)
-
+        document.addEventListener('keydown', closeByEscape);
         return () => {
-            document.removeEventListener('keydown', closeByEscape)
+            document.removeEventListener('keydown', closeByEscape);
         }
-
     }, [])
 
     function handleClickSubmit() {
@@ -167,10 +164,16 @@ function App() {
     function onLogin(email, password) {
         auth.login(email, password)
             .then((data) => {
-                console.log(data);
                 if (data.message === 'Успешный вход') {
-                    setLoggedIn(true);
-                    history.push('/');
+                    auth.tokenCheck()
+                        .then(data => {
+                            if (data.email) {
+                                setLoggedIn(true);
+                                setEmailUser(data.email);
+                                history.push('/');
+                            }
+                        })
+                        .catch(err => console.error(err));
                 }
             })
             .catch(err => console.log(err));
@@ -178,8 +181,13 @@ function App() {
 
     function onSignOut() {
         setLoggedIn(false);
-        localStorage.removeItem('token')
-        history.push('/sign-in');
+        auth.logout()
+            .then(data => {
+                if (data.message === 'Успешный выход') {
+                    history.push('/sign-in');
+                }
+            })
+            .catch(err => console.error(err));
     }
 
     function onRegister(email, password) {

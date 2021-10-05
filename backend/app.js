@@ -4,18 +4,25 @@ import cookieParser from 'cookie-parser';
 import { celebrate, errors, Joi } from 'celebrate';
 import usersRouter from './routes/users';
 import cardsRouter from './routes/cards';
-import { login, createUser } from './controllers/users';
+import { login, createUser, logout } from './controllers/users';
 import auth from './middlewares/auth';
 import handleErrors from './middlewares/handleErrors';
 import customValidationUrl from './utils/utils';
-import cors from './middlewares/cors';
 import { requestLogger, errorLogger } from './middlewares/logger'; 
+import cors from 'cors';
 
 const { PORT = 3001 } = process.env;
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 204,
+  methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
+  credentials: true,
+}
+
 const app = express();
 
-app.use(cors);
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -40,9 +47,12 @@ app.post('/signin', celebrate({
     password: Joi.string().required(),
   }),
 }), login);
+app.get('/signout', logout);
+
 app.use(auth);
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
+
 
 app.use(errorLogger);
 
