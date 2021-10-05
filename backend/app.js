@@ -14,7 +14,7 @@ import cors from 'cors';
 const { PORT = 3001 } = process.env;
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['https://mesto.nikotin.nomoredomains.club','http://mesto.nikotin.nomoredomains.club'],
   optionsSuccessStatus: 204,
   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
   credentials: true,
