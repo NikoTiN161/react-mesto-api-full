@@ -35,6 +35,10 @@ function App() {
     const location = useLocation();
 
     useEffect(() => {
+        init();
+    }, []);
+
+    function init() {
     api.getUserInfo()
         .then((user) => {
             setCurrentUser(user);
@@ -46,7 +50,7 @@ function App() {
             setCards(cards);
         })
         .catch(err => console.error(err));
-    }, [loggedIn]);
+    }
 
     useEffect(() => {
         auth.tokenCheck()
@@ -62,7 +66,7 @@ function App() {
     }, [history, location.pathname]);
 
     function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(i => i === currentUser._id);
 
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
@@ -168,8 +172,9 @@ function App() {
                     auth.tokenCheck()
                         .then(data => {
                             if (data.email) {
-                                setLoggedIn(true);
+                                init();
                                 setEmailUser(data.email);
+                                setLoggedIn(true);
                                 history.push('/');
                             }
                         })

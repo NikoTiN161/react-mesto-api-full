@@ -22,7 +22,8 @@ function Card(props) {
             <div className="elements__container">
                 <h2 className="elements__header">{props.card.name}</h2>
                 <div className="elements__container elements__container_likes">
-                    <button type="button" className={`elements__like-button ${props.card.likes.some(item => item._id === value.currentUser._id) && "elements__like-button_liked"}`}
+                    {console.log('likes', props.card.likes)}
+                    <button type="button" className={`elements__like-button ${props.card.likes.some(item => item === value.currentUser._id) && "elements__like-button_liked"}`}
                         onClick={handleLikeClick}></button>
                     <span className="elements__counter-likes">{props.card.likes.length}</span>
                 </div>
