@@ -6,5 +6,7 @@
 `pm2 start 'npm run start'` — запускает сервер   
 
 IP-адрес сервера: 62.84.122.63
+
 Ссылка на сайт: https://mesto.nikotin.nomoredomains.club/ 
+
 Бэкенд: https://nikotin.nomoredomains.club/ 
