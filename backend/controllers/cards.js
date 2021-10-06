@@ -22,7 +22,12 @@ export const createCards = (req, res, next) => {
       if (!card) {
         throw new BadRequestError('Переданы некорректные данные');
       }
-      res.send(card);
+      Card.findOne({ name: name, link: link })
+        .populate('owner')
+        .then((card) => {
+          res.send(card);
+        })
+        .catch(next);
     })
     .catch(next);
 };

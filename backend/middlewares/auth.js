@@ -1,7 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import UnauthorizedError from '../errors/UnauthorizedError';
 
-const { JWT_SECRET = 'dev-key' } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 // eslint-disable-next-line consistent-return
 function auth(req, res, next) {
@@ -11,7 +11,7 @@ function auth(req, res, next) {
   }
   let payload;
   try {
-    payload = jsonwebtoken.verify(jwt, JWT_SECRET);
+    payload = jsonwebtoken.verify(jwt, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', );
   } catch (err) {
     throw new UnauthorizedError('Необходима авторизация');
   }

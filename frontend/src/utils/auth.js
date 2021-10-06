@@ -27,7 +27,6 @@ class Auth {
         return fetch(`${this._baseUrl}/signout`, {
             method: 'GET',
             credentials: 'include',
-            headers: this._headers,
         })
             .then(this._checkResponse);
     }
@@ -45,10 +44,6 @@ class Auth {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
             credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
         })
             .then(this._checkResponse);
     }
