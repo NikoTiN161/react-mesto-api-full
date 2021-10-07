@@ -1,0 +1,16 @@
+{
+	"extends": "airbnb-base",
+	"ignorePatterns": [
+		"node_modules/*"
+	],
+	"rules": {
+		"no-underscore-dangle": [
+			"error",
+			{
+				"allow": [
+					"_id"
+				]
+			}
+		]
+	}
+}

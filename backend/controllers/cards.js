@@ -22,10 +22,10 @@ export const createCards = (req, res, next) => {
       if (!card) {
         throw new BadRequestError('Переданы некорректные данные');
       }
-      Card.findOne({ name: name, link: link })
+      Card.findOne({ name, link })
         .populate('owner')
-        .then((card) => {
-          res.send(card);
+        .then((newCard) => {
+          res.send(newCard);
         })
         .catch(next);
     })

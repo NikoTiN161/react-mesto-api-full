@@ -10,8 +10,8 @@ export const login = (req, res, next) => {
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', 
+      const token = jwt.sign({ _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' });
       res
         .cookie('jwt', token, {
@@ -20,7 +20,7 @@ export const login = (req, res, next) => {
           sameSite: 'None',
           secure: true,
         });
-        res.send({ email: user.email, _id: user._id, message: 'Успешный вход' });
+      res.send({ email: user.email, _id: user._id, message: 'Успешный вход' });
     })
     .catch(next);
 };
@@ -31,7 +31,7 @@ export const logout = (req, res) => {
       maxAge: -1,
     });
   res.send({ message: 'Успешный выход' });
-}
+};
 
 export const getUsers = (req, res, next) => {
   User.find({})
