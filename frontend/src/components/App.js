@@ -34,9 +34,9 @@ function App() {
   const history = useHistory();
   const location = useLocation();
 
-  useEffect(() => {
-    init();
-  }, []);
+  // useEffect(() => {
+  //   init();
+  // }, []);
 
   function init() {
     api.getUserInfo()
@@ -59,6 +59,7 @@ function App() {
     auth.tokenCheck()
       .then(data => {
         if (data.email) {
+          init();
           setLoggedIn(true);
           setEmailUser(data.email);
           history.push('/');

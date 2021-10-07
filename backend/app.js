@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import { celebrate, errors, Joi } from 'celebrate';
 import cors from 'cors';
+import helmet from 'helmet';
 import usersRouter from './routes/users';
 import cardsRouter from './routes/cards';
 import { login, createUser, logout } from './controllers/users';
@@ -10,6 +11,7 @@ import auth from './middlewares/auth';
 import handleErrors from './middlewares/handleErrors';
 import customValidationUrl from './utils/utils';
 import { requestLogger, errorLogger } from './middlewares/logger';
+import NotFoundError from './errors/NotFoundError';
 
 const { PORT = 3001 } = process.env;
 
@@ -22,6 +24,7 @@ const corsOptions = {
 
 const app = express();
 
+app.use(helmet());
 app.use(cors(corsOptions));
 
 app.use(express.json());
@@ -58,6 +61,10 @@ app.get('/signout', logout);
 app.use(auth);
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
+
+app.use('/', (req, res, next) => {
+  next(new NotFoundError('Маршрут не найден'));
+});
 
 app.use(errorLogger);
 
